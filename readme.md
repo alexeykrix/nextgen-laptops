@@ -1,2 +1,2 @@
 link to deployed version
-# https://alexeykrix.github.io/Podarunochok/
+# https://alexeykrix.github.io/nextgen-laptops

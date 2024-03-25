@@ -53,7 +53,7 @@ const generateCards = () => {
 
   for (let i = 0; i < 16; i++) {
     const card = cardTemplate.content.cloneNode(true);
-    card.querySelector('img').src = `/img/cards/card-${ Math.floor(Math.random()*5) }.webp`
+    card.querySelector('img').src = `./img/cards/card-${ Math.floor(Math.random()*5) }.webp`
     card.querySelector('.catalog-card__title').innerHTML = getRandomTitle()
     card.querySelector('.catalog-card__description').innerHTML = getRandomDescription()
     card.querySelector('.catalog-card__btn').innerHTML = getRandomPrice()
