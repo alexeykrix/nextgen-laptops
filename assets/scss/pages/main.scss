@@ -1,0 +1,194 @@
+@import '../index.scss';
+
+.hero {
+  height: 100vh;
+  background: #ededed;
+
+  @include max(xs) {
+    padding-top: 45px;
+    height: auto;
+    padding-bottom: 15px;
+    position: relative;
+  }
+
+  &-inner {
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+  &-content {
+    max-width: 600px;
+    width: 100%;
+  }
+  &-title {
+    font-size: 58px;
+    line-height: 100%;
+    color: $color-accent;
+    @include offset-media(margin-bottom, blue);
+    @include max(xs) {
+      font-size: 25px;
+      padding-top: 80px;
+    }
+  }
+  &-description {
+    display: flex;
+    flex-direction: column;
+    @include offset-media(margin-bottom, yellow);
+  }
+  &-image {
+    position: relative;
+    width: 534px;
+    @include max(xs) {
+      position: absolute;
+      right: 15px;
+      width: 142.69px;
+      top: 50%;
+    }
+
+    img {
+      width: 100%;
+    }
+  }
+  //  hero-image__part-bg
+  &-btn {
+    width: 224px;
+  }
+}
+
+.catalog {
+  scroll-margin-top: 50px;
+
+  @include offset-media(padding-top, red);
+  @include max(xs) {
+    padding-top: 15px;
+  }
+  &-header {
+    display: flex;
+    justify-content: space-between;
+    @include offset-media(margin-bottom, coral);
+
+    @include max(xs) {
+      flex-direction: column;
+      gap: 64px;
+    }
+  }
+  &-info {
+    width: 304px;
+    
+    h1 {
+      @include offset-media(margin-bottom, purple);
+    }
+  }
+  &-filters {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    
+    .btn:not(.btn-small) {
+      margin-top: 14px;
+    }
+
+    &__list {
+      display: flex;
+      gap: 16px;
+
+      @include max(xs) {
+        width: 100%;
+        overflow-y: hidden;
+        overflow-x: auto;
+        gap: 5px;
+        padding-bottom: 0;
+
+        .btn {
+          flex-shrink: 0;
+        }
+      }
+    }
+  }
+
+  &-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 260px);
+    justify-content: space-between;
+    @include offset-media(row-gap, yellow);
+    @include offset-media(padding-bottom, yellow);
+    perspective: 1000px;
+    
+    @include max(xs) {
+      grid-template-columns: repeat(2, 165px);
+    }
+  }
+  &-card {
+    width: 260px;
+    padding: 16px;
+    background: #fff;
+    border-radius: 10px;
+    text-align: center;
+    transform-style: preserve-3d;
+
+    @include max(xs) {
+      width: 100%;
+      padding: 10px;
+      border-radius: 22px;
+    }
+    
+    &__image {
+      border-radius: 0px;
+      overflow: hidden;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+
+      @include max(xs) {
+        border-radius: 16px;
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+    &__title {
+      @include offset-media(margin-top, green);
+    }
+    &__description {
+      @include offset-media(margin-top, purple);
+      display: -webkit-box;
+      overflow: hidden;
+      line-clamp: 3;
+      -webkit-line-clamp: 3;
+      box-orient: vertical;
+      -webkit-box-orient: vertical;
+      text-overflow: ellipsis;
+      @include max(xs) {
+        display: none;
+      }
+    }
+    &__btn {
+      @include offset-media(margin-top, blue);
+      width: 100%;
+    }
+  }
+
+  &-loading {
+    @include offset-media(padding-bottom, yellow);
+    &__inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      @include offset-media(gap, purple);
+
+      svg {
+        animation: rotate-loading 2s linear infinite;
+      }
+      @keyframes rotate-loading {
+        from {
+            transform: rotate(0deg);
+        }
+        to {
+            transform: rotate(360deg);
+        }
+      }
+    }
+  }
+}

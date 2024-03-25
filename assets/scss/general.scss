@@ -1,0 +1,162 @@
+.container {
+  max-width: 1140px;
+  margin-left: auto;
+  margin-right: auto;
+  @include max(xs) {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+
+body {
+  background: $color-bg;
+  transition: opacity 2s ease;
+}
+
+.btn {
+  @extend .p1;
+  color: $color-highlight;
+  border: 1px solid $color-highlight;
+  padding: 8px 20px;
+  border-radius: 28px;
+  display: flex;
+  justify-content: center;
+  transition: $transition-400;
+
+  &-small {
+    @extend .p2;
+    padding: 2px 13px;
+  }
+
+  svg {
+    path, circle {
+      transition: $transition-400;
+    }
+  }
+
+  &:hover {
+    color: $color-bg;
+    background: $color-highlight;
+  }
+  &-accent {
+    color: $color-accent;
+    border-color: $color-accent;
+    &:hover {
+      background: $color-accent;
+    }
+  }
+
+  &:active {
+    opacity: 0.7;
+  }
+}
+
+.header {
+  border-bottom: 0.3px solid $color-accent;
+  backdrop-filter: blur(20px);
+  position: fixed;
+  width: 100%;
+  z-index: 100;
+  top: 0;
+  &-logo {
+    height: 50px;
+    @include max(xs) {
+      width: 134px;
+    }
+  }
+  &-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @include offset-media(padding-top, purple);
+    @include offset-media(padding-bottom, purple);
+  }
+  &-nav {
+    flex-grow: 1;
+
+    &__list {
+      display: flex;
+      justify-content: flex-end;;
+      align-items: center;
+      gap: 24px;
+      @include max(xs) {
+        gap: 15px;
+      }
+    }
+    &__item {
+
+      &__search {
+        margin-right: auto;
+        margin-left: auto;
+        svg {
+          margin-top: 2px;
+          display: block;
+        }
+
+        @include max(xs) {
+          margin: 0;
+          span {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+  &-btn {
+    display: flex;
+    gap: 5px;
+
+    &:hover span::after {
+      width: 100%;
+    }
+
+    span {
+      position: relative;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -3px;
+        left: 0;
+        width: 0;
+        height: 1px;
+
+        background: $color-text;
+        transition: $transition-400;
+      }
+    }
+  }
+}
+
+.footer {
+  background: $color-text;
+
+  &-inner {
+    display: flex;
+    justify-content: space-between;
+    @include offset-media(padding-top, blue);
+    @include offset-media(padding-bottom, blue);
+    @include max(xs) {
+      flex-wrap: wrap;
+      justify-content: space-between;
+      row-gap: 15px;
+      align-items: center;
+    }
+  }
+
+  &-text {
+    color: $color-bg;
+
+    @include max(xs) {
+      font-size: 12px;
+    }
+
+    &:nth-child(2) {
+      @include max(xs) {
+        width: 100%;
+        text-align: center;
+        order: -1;
+      }
+    }
+  }
+}
