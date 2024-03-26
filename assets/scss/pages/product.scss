@@ -123,7 +123,6 @@ body {
 
   &-wrap {
     display: grid;
-    grid-template-columns: 525px 1fr;
     @include offset-media(margin-bottom, yellow);
     
     @include max(xs) {
@@ -137,8 +136,6 @@ body {
 }
 
 .details-wrap > .details:first-child {
-  padding-right: 48px;
-  border-right: 1px solid $color-accent;
   @include max(xs) {
     padding-right: 0;
     border: none;
