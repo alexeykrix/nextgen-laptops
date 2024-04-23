@@ -58,7 +58,27 @@ const generateCards = () => {
     card.querySelector('.catalog-card__description').innerHTML = getRandomDescription()
     card.querySelector('.catalog-card__btn').innerHTML = getRandomPrice()
     card.querySelector('img').style.filter = getRandomColor()
+    card.querySelector('.catalog-card').href = '/product/'
     container.appendChild(card)
+
+    container.addEventListener('click', (e) => {
+      e.preventDefault()
+
+      const card = e.target.closest('.catalog-card')
+      if (!card) return
+      const product = {
+        img: card.querySelector('img').src,
+        title: card.querySelector('.catalog-card__title').innerHTML,
+        description: card.querySelector('.catalog-card__description').innerHTML,
+        price: card.querySelector('.catalog-card__btn').innerHTML,
+        filter: card.querySelector('img').style.filter
+      }
+
+      localStorage.setItem('product', JSON.stringify(product))
+      window.location.href = '/product/'
+    })
+
+
   }
 
   setTimeout(() => {
@@ -77,7 +97,7 @@ const createIntersectionObserver = () => {
         clearTimeout(timeout)
         timeout = null
         generateCards()
-      }, 2000)
+      }, 500)
     }
   })
 
@@ -139,6 +159,15 @@ const startAnimation = () => {
         end: 'bottom bottom',
       }
     })
+  })
+
+  const filters = document.querySelector('.catalog-filters__list')
+  filters.addEventListener('click', () => {
+    const cards = document.querySelectorAll('.catalog-card')
+    cards.forEach(el => el.remove())
+    
+
+    generateCards()
   })
 
 
